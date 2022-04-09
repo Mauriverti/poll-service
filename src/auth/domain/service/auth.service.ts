@@ -1,5 +1,4 @@
 import { Response } from 'express';
-import { AuthError } from 'firebase/auth';
 import { User } from '../../../user/domain/models/user';
 import AuthRepository from '../../data/auth.repository';
 import AuthErrorService from './auth-error.service';
@@ -9,6 +8,7 @@ export default class AuthService {
     try {
       res.send(await AuthRepository.signIn(user));
     } catch(e) {
+      console.log('error', JSON.stringify(e));
       res.status(400).send(AuthErrorService.parseCreateUserError(e));
     }
   }
@@ -17,6 +17,7 @@ export default class AuthService {
     try {
       res.send(await AuthRepository.signUp(user));
     } catch(e) {
+      console.log('error', JSON.stringify(e));
       res.status(400).send(AuthErrorService.parseCreateUserError(e));
     }
   }

@@ -1,10 +1,9 @@
-import { AuthError, AuthErrorCodes } from 'firebase/auth';
-import ErrorResponse, { ErrorType } from '../../../shared/domain/model/error-message';
+import { AuthErrorCodes } from 'firebase/auth';
+import ErrorResponse from '../../../shared/domain/model/error-message';
 
 export default class AuthErrorService {
   static parseCreateUserError(error: any): ErrorResponse {
-    if (error) {
-      // console.log('error', JSON.stringify(error));
+    if (error && error.code) {
       switch(error.code) {
         case AuthErrorCodes.EMAIL_EXISTS: {
           return new ErrorResponse('Email already in use');
@@ -16,6 +15,6 @@ export default class AuthErrorService {
           return new ErrorResponse(error.code);
         }
       }
-    } else return new ErrorResponse(error);
+    } else return new ErrorResponse(JSON.stringify(error));
   }
 }

@@ -11,6 +11,6 @@ export default class LoadVotesUseCase {
   }
 
   static async loadVotes(filters: unknown, res: Response) {
-    return res.send(await VoteRepository.loadVotesbyFilter(filters));
+    return res.send(await VoteRepository.loadVotesByFilter(filters));
   }
 }

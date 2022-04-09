@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import { Vote } from '../../../poll/domain/models/vote';
+import { Vote } from '../models/vote';
 import VoteRepository from '../../data/vote.repository';
 
 export default class UpdateVoteUseCase {

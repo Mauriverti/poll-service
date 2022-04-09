@@ -1,7 +1,7 @@
 import { deleteDoc, getDocs, query, QueryConstraint, setDoc, updateDoc, where } from 'firebase/firestore';
-import { Vote } from '../../poll/domain/models/vote';
+import { Vote } from '../domain/models/vote';
 import { getCollection, getRef } from '../../shared/domain/utils/firestore.utils';
-import { parseFilter } from '../../shared/domain/utils/get-filters';
+import { createFilter } from '../../shared/domain/utils/create-filters';
 
 export default class VoteRepository {
   private static readonly collection = 'vote';
@@ -21,18 +21,18 @@ export default class VoteRepository {
     return this.loadVotes([filter]);
   }
 
-  static async loadVotesbyFilter(filter: unknown) {
-    const filters = parseFilter(filter);
+  static async loadVotesByFilter(filter: unknown) {
+    const filters = createFilter(filter);
     return this.loadVotes(filters);
   }
 
-  static async loadVotesbyVoter(userId: string) {
+  static async loadVotesByVoter(userId: string) {
     const filter = where('voter', '==', userId);
     return this.loadVotes([filter]);
   }
 
   static async migrateVote(oldUserId: string, newUserId: string) {
-    let votes = await this.loadVotesbyVoter(oldUserId);
+    let votes = await this.loadVotesByVoter(oldUserId);
     votes = votes.map((vote) => {
       vote.voter = newUserId;
       return vote;
