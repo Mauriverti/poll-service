@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
+    "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules ./index.ts",
     "test": "jest"
   },
