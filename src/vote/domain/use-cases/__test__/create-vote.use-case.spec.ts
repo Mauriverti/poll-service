@@ -1,5 +1,5 @@
-import { validate } from 'uuid';
-import { Vote } from '../../models/vote';
+import {validate} from 'uuid';
+import {Vote} from '../../models/vote';
 import CreateVoteUseCase from '../create-vote.use-case';
 
 describe('CreateVoteUseCase', () => {

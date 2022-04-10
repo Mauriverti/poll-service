@@ -1,16 +1,15 @@
-import { Request } from 'express';
+import {Request} from 'express';
 import getUserFromHeader from '../get-user-from-header';
 
 describe('getUserFromHeader', () => {
-
   const createFakeRequest = (authorization: string = '') => {
     const fakeReq= {
       headers: {
-        authorization: `Bearer ${authorization}`
-      }
-    } as Request
+        authorization: `Bearer ${authorization}`,
+      },
+    } as Request;
     return fakeReq;
-  }
+  };
 
 
   describe('with authorization', () => {
@@ -23,7 +22,7 @@ describe('getUserFromHeader', () => {
     it('should extract auth value', () => {
       const auth = getUserFromHeader(fakeReq);
       expect(auth).toBe(authCode);
-    })
+    });
   });
 
   describe('without authorization', () => {
@@ -36,6 +35,6 @@ describe('getUserFromHeader', () => {
     it('should extract auth value', () => {
       const auth = getUserFromHeader(fakeReq);
       expect(auth).toBe('');
-    })
+    });
   });
 });

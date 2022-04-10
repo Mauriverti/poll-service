@@ -1,16 +1,14 @@
-import { AuthError, AuthErrorCodes } from 'firebase/auth';
+import {AuthError, AuthErrorCodes} from 'firebase/auth';
 import AuthErrorService from '../auth-error.service';
 
 describe('AuthErrorService', () => {
-
   describe('with firebase error', () => {
-
     const createError = (errorCode: string) => {
       const error = {
         code: errorCode,
       } as AuthError;
       return error;
-    }
+    };
     let error;
 
     it('should return a custom message to email already in use error', () => {
@@ -33,7 +31,6 @@ describe('AuthErrorService', () => {
   });
 
   describe('with unhandled error', () => {
-
     const error = {
       message: 'oops',
     };

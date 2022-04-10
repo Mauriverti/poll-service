@@ -3,6 +3,17 @@ export enum ErrorType {
   WARNING = 'WARNING',
 }
 
+/**
+ * Error message default object
+ */
 export default class ErrorResponse {
-  constructor(public message: string, public type = ErrorType.ERROR) { }
+  /**
+   * @constructor
+   * @param { string } message error message
+   * @param { ErrorType } type type of error
+   */
+  constructor(
+    public message: string,
+    public type = ErrorType.ERROR,
+  ) { }
 }

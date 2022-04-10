@@ -1,11 +1,11 @@
-import ExpressServer from './config/express';
-import AuthRouting from './src/auth/api/route/auth.routing';
-import PollRouting from './src/poll/api/routes/poll.routing';
-import UserRouting from './src/user/api/routes/user.routing';
-import VoteRouting from './src/vote/api/routes/vote.routing';
+import expressServer from './config/express';
+import authRouting from './src/auth/api/route/auth.routing';
+import pollRouting from './src/poll/api/routes/poll.routing';
+import userRouting from './src/user/api/routes/user.routing';
+import voteRouting from './src/vote/api/routes/vote.routing';
 
-const app = ExpressServer();
-app.use(AuthRouting());
-app.use(PollRouting());
-app.use(UserRouting());
-app.use(VoteRouting());
+const app = expressServer();
+app.use(authRouting());
+app.use(pollRouting());
+app.use(userRouting());
+app.use(voteRouting());

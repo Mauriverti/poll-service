@@ -1,7 +1,12 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import PollController from '../controllers/poll.controller';
 
+/**
+ * routes for Poll
+ * @return { Router }
+ */
 export default function PollRouting() {
+  // eslint-disable-next-line new-cap
   const route = Router();
   route.get('/api/poll', PollController.list);
   route.get('/api/poll/:id', PollController.loadById);
